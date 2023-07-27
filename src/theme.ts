@@ -1,0 +1,137 @@
+const colors = {
+    white: "#ffffff",
+    black: "#000000",
+    cyan: {
+        //100: "#c2e9e9",
+        light: "#9edcdc",
+        //300: "#7bd0d0",
+        main: "#58c3c3",
+        //500: "#35b6b6",
+        dark: "#32a5a5",
+        //700: "#2e9393",
+        contrastText: "#2a8080",
+        //900: "#266e6e"
+    },
+    gray: {
+        //100: "#f5f5f5",
+        light: "#eeeeee",
+        //300: "#e0e0e0",
+        main: "#bdbdbd",
+        //500: "#9e9e9e",
+        dark: "#757575",
+        //700: "#616161",
+        contrastText: "#424242",
+        //900: "#212121",
+    },
+    aquaGreen: {
+        //100: "#c3f1df",
+        light: "#9ee7cb",
+        //300: "#7ae0b9",
+        main: "#57d8a7",
+        //500: "#34cf95",
+        dark: "#31bb85",
+        //700: "#2da374",
+        contrastText: "#298f63",
+        //900: "#257b52"
+      },
+    primary: {
+        //100: "#c7e9ff",
+        light: "#95d5ff",
+        //300: "#63c1ff",
+        main: "#32adff",
+        //500: "#0099ff",
+        dark: "#0088e6",
+        //700: "#0077cc",
+        contrastText: "#0066b3",
+        //900: "#005599",
+    },
+    secondary: {
+        //100: "#ffe0f7",
+        light: "#ffb3e6",
+        //300: "#ff80d5",
+        main: "#ff4db3",
+        //500: "#ff1a92",
+        dark: "#e6007a",
+        //700: "#cc0066",
+        contrastText: "#b30052",
+        //900: "#9//90040",
+    },
+    red: {
+        //100: "#ffebee",
+        light: "#ffcdd2",
+        //300: "#ef9a9a",
+        main: "#e57373",
+        //500: "#f44336",
+        dark: "#e53935",
+        //700: "#d32f2f",
+        contrastText: "#c62828",
+        //900: "#b71c1c",
+    },
+    green: {
+        //100: "#e8f5e9",
+        light: "#c8e6c9",
+        //300: "#a5d6a7",
+        main: "#81c784",
+        //500: "#4caf50",
+        dark: "#43a047",
+        //700: "#388e3c",
+        contrastText: "#2e7d32",
+        //900: "#1b5e20",
+    },
+    yellow: {
+        //100: "#fff9c4",
+        light: "#fff59d",
+        //300: "#fff176",
+        main: "#ffee58",
+        //500: "#ffeb3b",
+        dark: "#fdd835",
+        //700: "#fbc02d",
+        contrastText: "#f9a825",
+        //900: "#f57f17",
+    },
+    orange: {
+        //100: "#fff3e0",
+        light: "#ffe0b2",
+        //300: "#ffcc80",
+        main: "#ffb74d",
+        //500: "#ff9800",
+        dark: "#fb8c00",
+        //700: "#f57c00",
+        contrastText: "#ef6c00",
+        //900: "#e65100",
+    },
+    purple: {
+        //100: "#f3e5f5",
+        light: "#e1bee7",
+        //300: "#ce93d8",
+        main: "#ba68c8",
+        //500: "#9c27b0",
+        dark: "#8e24aa",
+        //700: "#7b1fa2",
+        contrastText: "#6a1b9a",
+        //900: "#4a148c",
+    },
+
+};
+
+const globalTheme = {
+    palette: {
+        common: {
+            white: colors.white,
+            black: colors.black
+        },
+        primary: colors.primary,
+        secondary: colors.secondary,
+        error: colors.red,
+        success: colors.green,
+        warning: colors.yellow,
+        info: colors.cyan,
+        accent: colors.purple,
+        grey: colors.gray
+    },
+    typography: {
+        fontFamily: 'Arial, sans-serif', // Cambia la fuente
+    },
+};
+  
+export default globalTheme;
