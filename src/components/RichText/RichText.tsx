@@ -1,10 +1,9 @@
 import React from 'react';
 import { styled } from '@mui/system';
-
-import { formatTextWithBold } from 'helper';
 import { Typography } from '@mui/material';
 
-//TODO: move stand-alone component, and use theme colors
+import { formatTextWithBold } from 'helper';
+
 const StyledSpan = styled('span')`
     background-color: #282a36;
     color: #f8f8f2;
@@ -18,88 +17,64 @@ const StyledSpan = styled('span')`
     text-align: initial;
 `;
 
-type RichTextType = {
-    complexText: any
+interface RichTextProps {
+    complexText: any;
 }
-const RichText: React.FC<RichTextType> = ({complexText}: RichTextType) => {
 
+const RichText: React.FC<RichTextProps> = ({ complexText }: RichTextProps) => {
     if (complexText === undefined) return null;
 
-    const valuesToRenderFromFinalObj = (finalObj) => {
-        let response;
+    const valuesToRenderFromFinalObj = (finalObj: any): JSX.Element | JSX.Element[] | string => {
+        let response: JSX.Element | JSX.Element[] | string;
 
-        if(finalObj.nodeType === "list-item"){
-            response = finalObj.content.map(value => {
-                return (
-                    obtainValuesFromLastChildArr(value)
-                )
-            })
-        } else if(finalObj.content?.length > 1){
-            response = finalObj.content.map(value => {
-                return (
-                    obtainValuesFromLastChildArr(value)
-                )
-            })
-        } else if(finalObj?.marks && finalObj?.marks[0]?.type === "code"){
-            response = finalObj.value.split('\n').map(value => {
-                return (
-                    <StyledSpan>{value}</StyledSpan>
-                )
-            })
+        if (finalObj.nodeType === 'list-item' || (finalObj.content?.length && finalObj.content?.length > 1)) {
+            response = finalObj.content.map((value: any) => obtainValuesFromLastChildArr(value));
+        } else if (finalObj?.marks && finalObj?.marks[0]?.type === 'code') {
+            response = finalObj.value.split('\n').map((value: string) => (
+                <StyledSpan key={value}>{value}</StyledSpan>
+            ));
         } else {
-            response = (finalObj.value?.includes("**") ?
-                finalObj.value.split("**").map(value => {
-                    return (
-                        <span>{formatTextWithBold(value)}</span>
-                    )
-                }) : response = finalObj.value
-            )
+            response = finalObj.value?.includes('**')
+                ? finalObj.value.split('**').map((value: string) => (
+                      <span key={value}>{formatTextWithBold(value)}</span>
+                  ))
+                : finalObj.value;
         }
 
-        return response
-    }
-    
-    const obtainValuesFromLastChildArr = ({childArr, key}) => {
-        const response = childArr?.content?.map((finalObj) => {
-                return(
-                    valuesToRenderFromFinalObj(finalObj)
-                )})
+        return response;
+    };
 
-        if(childArr?.nodeType === "ordered-list"){
-            return(
-                <ol key={key}>{childArr?.content?.map((itemList, index) => (
-                    <li key={index}>
-                        {itemList?.content?.map((item) => {
-                            return (
-                            valuesToRenderFromFinalObj(item.content[0])
-                        )})}
-                    </li>
-                ))}</ol>
-        )} else if(childArr?.nodeType === "paragraph"){
-            return(
-                <Typography variant="body1" key={key}>{response}</Typography>
-        )} else if(childArr?.nodeType === "heading-1" || childArr?.nodeType === "heading-2"){
-            return(
-                <Typography variant="h4" key={key}>{response}</Typography>
-        )}
-        else {
-            return(
-                <Typography variant="h5" key={key}>{response}</Typography>
-        )}
-    }
+    const obtainValuesFromLastChildArr = ({ childArr, key }: { childArr: any; key: number }): JSX.Element => {
+        const response = childArr?.content?.map((finalObj: any) => valuesToRenderFromFinalObj(finalObj));
 
-    const ContentComponent = ({ complexText }: RichTextType) => {
-        return (
-        complexText ? (
-            complexText.content.map((childArr, key) => (
-                obtainValuesFromLastChildArr({ childArr, key })
-            ))
-        ) : null
-      )};
+        if (childArr?.nodeType === 'ordered-list') {
+            return (
+                <ol key={key}>
+                    {childArr?.content?.map((itemList: any, index: number) => (
+                        <li key={index}>
+                            {itemList?.content?.map((item: any) => {
+                                return valuesToRenderFromFinalObj(item.content[0]);
+                            })}
+                        </li>
+                    ))}
+                </ol>
+            );
+        } else if (childArr?.nodeType === 'paragraph') {
+            return <Typography variant="body1" key={key}>{response}</Typography>;
+        } else if (childArr?.nodeType === 'heading-1' || childArr?.nodeType === 'heading-2') {
+            return <Typography variant="h4" key={key}>{response}</Typography>;
+        } else {
+            return <Typography variant="h5" key={key}>{response}</Typography>;
+        }
+    };
 
-    return (
-        <ContentComponent complexText={complexText} />
-    );
-}
+    const ContentComponent: React.FC<RichTextProps> = ({ complexText }: RichTextProps) => {
+        return complexText ? (
+            <>{complexText.content.map((childArr: any, key: number) => obtainValuesFromLastChildArr({ childArr, key }))}</>
+        ) : null;
+    };
+
+    return <ContentComponent complexText={complexText} />;
+};
 
 export default RichText;

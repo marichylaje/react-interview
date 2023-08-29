@@ -20,7 +20,6 @@ export type QuestionaireResponseProps = {
 
 const QuestionaireResponse: React.FC<QuestionaireResponseProps > = ({ answer, index, randomizedResponses, contentProp }: QuestionaireResponseProps) => {
     if(answer && !answer.resp) return null;
-    console.log({contentProp})
     
     const dispatch = useDispatch();
     const userStats = useSelector((state: { questionaire: ExperienceType }) => state.questionaire.experience);
@@ -50,7 +49,6 @@ const QuestionaireResponse: React.FC<QuestionaireResponseProps > = ({ answer, in
 
     const verifyResponse = ({index, e}: {index: number; e: React.MouseEvent<HTMLDivElement>}) => {
         e.stopPropagation();
-        console.log("HERE: " + contentProp.hasAnsweredRight)
 
         if(hasSelectedAnswer){
             resetStates();
@@ -72,7 +70,6 @@ const QuestionaireResponse: React.FC<QuestionaireResponseProps > = ({ answer, in
                 dispatch(updateAnsweredQuestion(updatedQuestionWithRightResponse))
 
                 dispatch(updateExpPoints(userStats.expPoints + 1));
-                console.log({updatedQuestionWithRightResponse})
                 
             } else {
                 setIsAnsweredRight(false);

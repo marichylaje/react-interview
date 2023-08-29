@@ -1,12 +1,24 @@
 import React, { useEffect } from 'react';
 import Grid from '@mui/material/Grid';
-import {MenuList} from 'components';
+
+import { MenuList } from 'components';
 import { titleCaseFromHashParams } from 'helper';
 
+type contentData = {
+    content: any,
+    data: Object,
+    nodeType: string,
+}
+
+type myDataType = {
+    title: string,
+    content: contentData
+}
+
 export type TeoricGridProps = {
-    menuData: any,
+    menuData: myDataType[],
     teoricalContent: any,
-    setHashData: any,
+    setHashData: (data: string) => void,
     hashData: string,
 }
 
@@ -16,6 +28,7 @@ const TeoricGrid:React.FC<TeoricGridProps> = ({
     setHashData,
     hashData,
 }: TeoricGridProps) => {
+
 
     useEffect(() => {
         const handleHashChange = () => {

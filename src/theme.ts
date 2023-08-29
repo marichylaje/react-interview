@@ -12,7 +12,7 @@ const colors = {
         contrastText: "#2a8080",
         //900: "#266e6e"
     },
-    gray: {
+    grey: {
         //100: "#f5f5f5",
         light: "#eeeeee",
         //300: "#e0e0e0",
@@ -20,7 +20,7 @@ const colors = {
         //500: "#9e9e9e",
         dark: "#757575",
         //700: "#616161",
-        contrastText: "#424242",
+        // contrastText: "#424242",
         //900: "#212121",
     },
     aquaGreen: {
@@ -127,7 +127,7 @@ const globalTheme = {
         warning: colors.yellow,
         info: colors.cyan,
         accent: colors.purple,
-        grey: colors.gray
+        grey: colors.grey
     },
     typography: {
         fontFamily: 'Arial, sans-serif', // Cambia la fuente

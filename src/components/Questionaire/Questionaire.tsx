@@ -6,7 +6,7 @@ import globalTheme from 'theme';
 
 
 export type QuestionaireProps = {
-    contentProp: QuestionType | {};
+    contentProp: QuestionType;
 }
 
 import { styled } from '@mui/system';
@@ -24,7 +24,6 @@ const StyledQuestionBox = styled(Box)`
 
 const Questionaire:React.FC<QuestionaireProps> = ({contentProp}: QuestionaireProps) => {
     if(!contentProp) return null;
-    console.log("CONTENT: " + contentProp);
 
     const { question, falseResponse1, falseResponse2, falseResponse3, correctResponse } = contentProp && contentProp;
     if(!question) return null;

@@ -5,6 +5,7 @@ export type TeoricalType = {
     title: string;
 };
 
+// TODO: extends from QuestionType? en questionaireReducer.ts
 export type QuestionaireType = {
     title: string;
     question: string;
@@ -25,6 +26,7 @@ const initialState: ContentfulStateType = {
         title: "Loading...",
         content: "Loading...."
     }],
+    questionaire: []
 };
 
 const contentfulSlice = createSlice({
@@ -37,6 +39,6 @@ const contentfulSlice = createSlice({
   }
 });
 
-export const { updateContentfulTeorical, updateContentfulQuestionaire } = contentfulSlice.actions;
+export const { updateContentfulTeorical } = contentfulSlice.actions;
 
 export default contentfulSlice.reducer;

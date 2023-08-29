@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import contentfulReducer from './reducers';
-import questionaireReducer from './questionaireReducer';
+import { contentfulReducer } from 'store';
+import { questionaireReducer } from 'store';
 
 
 const store = configureStore({

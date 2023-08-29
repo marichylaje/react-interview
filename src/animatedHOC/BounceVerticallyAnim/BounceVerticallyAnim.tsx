@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-type BounceVerticallyAnimProps = {
+export type BounceVerticallyAnimProps = {
     children: React.ReactNode;
 }
 

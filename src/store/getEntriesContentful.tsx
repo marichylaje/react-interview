@@ -1,4 +1,4 @@
-import contentfulClient from '../../contentful';
+import contentfulClient from 'contentful';
 
 const getEntriesContentful = async (contentType: string) => {
     try {

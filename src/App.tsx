@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useDispatch } from "react-redux";
 import { Button, Grid, ThemeProvider, createTheme } from "@mui/material"
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
@@ -7,13 +8,12 @@ import { styled } from '@mui/system';
 import globalTheme from "./theme";
 import './App.css'
 
-import {MovingTitle} from "components"
-import {MovingSubtitle} from "components";
-import {SetButtonOptions} from "components";
+import { MovingTitle } from "components"
+import { MovingSubtitle } from "components";
+import { SetButtonOptions } from "components";
 import Pages from "pages";
 import { updateContentfulTeorical, updateContentfulQuestionaire, initTContentStore, initTQuestionairetStore } from "store";
-import type { QuestionaireType, TeoricalType } from "store";
-import { useDispatch } from "react-redux";
+import type { QuestionType, TeoricalType } from "store";
 
 const StyledDivTitle = styled("div")`
   margin: 30px 0px;
@@ -28,6 +28,22 @@ const StyledGoBackButton = styled(Button)`
   color: ${globalTheme.palette.primary.dark};
 `;
 
+// TODO: mover los mockedData a un archivo especifico
+const mockedTeoricalData: TeoricalType[] = [{
+  content: "",
+  title: "",
+}]
+
+const mockedQuestionaireData: QuestionType[] = [{
+  title: "",
+  question: "",
+  correctResponse: "",
+  falseResponse1: "",
+  falseResponse2: "",
+  falseResponse3: "",
+  difficulty: 1,
+}]
+
 const App: React.FC = () => {
   const theme = createTheme(globalTheme);
   const dispatch = useDispatch();
@@ -35,9 +51,9 @@ const App: React.FC = () => {
   const titleComp: string = "Welcome to";
   const title: string = "React Interview Training";
 
-  const [clickedBtnArrayPos, setClickedBtnArrayPos] = useState<number>(-1);
-  const [ teoricalData, setTeoricalData ] = useState<TeoricalType | []>([]);
-  const [ questionaireData, setQuestionaireData ] = useState<QuestionaireType | []>([]);
+  const [ clickedBtnArrayPos, setClickedBtnArrayPos ] = useState<number>(-1);
+  const [ teoricalData, setTeoricalData ] = useState<TeoricalType[]>(mockedTeoricalData);
+  const [ questionaireData, setQuestionaireData ] = useState<QuestionType[]>(mockedQuestionaireData);
 
   useEffect(() => {
     initTContentStore(setTeoricalData)

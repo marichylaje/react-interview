@@ -1,15 +1,17 @@
 import React from 'react';
 import { StyledButtonOptions } from './StyledButtonOptions';
+import { ButtonProps } from '@mui/material/Button';
 
-export type ButtonOptionsProps = {
+
+export interface ButtonOptionsProps extends ButtonProps {
     btnText: string;
     onClickBtn: () => void;
 }
 
-const ButtonOptions: React.FC<ButtonOptionsProps> = ({btnText, onClickBtn}: ButtonOptionsProps) => {
+const ButtonOptions: React.FC<ButtonOptionsProps> = ({btnText, onClickBtn, ...props}: ButtonOptionsProps) => {
   return (
     <div>
-        <StyledButtonOptions variant="outlined" onClick={onClickBtn}>{btnText}</StyledButtonOptions>
+        <StyledButtonOptions onClick={onClickBtn} variant={props.variant || "outlined"} {...props}>{btnText}</StyledButtonOptions>
     </div>
   );
 }

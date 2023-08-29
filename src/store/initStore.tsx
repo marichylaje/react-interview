@@ -1,4 +1,4 @@
-import getEntriesContentful from "./getEntriesContentful";
+import { getEntriesContentful } from "store";
 import type { ContentfulStateType } from "store";
 
 const initTContentStore = async (setData: (data: ContentfulStateType) => void) => {
