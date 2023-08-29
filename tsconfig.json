@@ -21,6 +21,7 @@
       "store": ["store/index.tsx"],
       "helper": ["helper.tsx"],
       "theme": ["theme.ts"],
+      "contentful": ["../contentful.ts"],
     },
 
     /* Linting */
@@ -29,6 +30,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "contentful.ts", "store.ts"],
+  "include": ["src", "store.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
