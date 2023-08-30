@@ -1,7 +1,7 @@
 import { QuestionType } from "store"
 
 const mockedQuestionaire: QuestionType[] = [{
-    title: "title question 1",
+    title: "question 1",
     question: "question",
     correctResponse: "correct answer",
     difficulty: 1, 
@@ -21,21 +21,21 @@ const mockedQuestionaire: QuestionType[] = [{
     falseResponse3: "false resp 2 3",
     hasAnsweredRight: false,
 }, {
-    title: "other question 3",
+    title: "lvl2 question 3",
     question: "question 3",
     correctResponse: "correct answer 3",
-    difficulty: 1, 
-    expCost: 0,
+    difficulty: 2, 
+    expCost: 4,
     falseResponse1: "false resp 3 1",
     falseResponse2: "false resp 3 2",
     falseResponse3: "false resp 3 3",
     hasAnsweredRight: false,
 }, {
-    title: "last question 4",
+    title: "lvl2 question 4",
     question: "question 4",
     correctResponse: "correct answer 4",
-    difficulty: 1, 
-    expCost: 0,
+    difficulty: 2, 
+    expCost: 4,
     falseResponse1: "false resp 4 1",
     falseResponse2: "false resp 4 2",
     falseResponse3: "false resp 4 3",
