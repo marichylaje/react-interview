@@ -10,7 +10,7 @@ import { snakeCaseText } from 'helper';
 import type { QuestionType, TeoricalType, QuestionaireType } from 'store';
 
 const MenuList: React.FC<{ menuData: (TeoricalType | QuestionType)[] }> = ({ menuData }): JSX.Element => {
-    const level = useSelector((state: { questionaire: QuestionaireType }) => state.questionaire.experience.level);
+    const level = useSelector((state: { questionaire: QuestionaireType }) => state?.questionaire?.experience?.level);
 
     return (
         <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
@@ -18,8 +18,8 @@ const MenuList: React.FC<{ menuData: (TeoricalType | QuestionType)[] }> = ({ men
                 {
                     menuData?.map((obj, index) => (
                         <ListItem key={index} disablePadding>
-                            <ListItemButton disabled={obj?.difficulty > level || false} href={"#" + snakeCaseText(obj.title)}>
-                                <ListItemText primary={obj.title} />
+                            <ListItemButton disabled={obj?.difficulty > level || false} href={"#" + snakeCaseText(obj?.title)}>
+                                <ListItemText primary={obj?.title} />
                             </ListItemButton>
                         </ListItem>
                     ))
