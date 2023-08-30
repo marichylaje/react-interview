@@ -15,6 +15,8 @@ import Pages from "pages";
 import { updateContentfulTeorical, updateContentfulQuestionaire, initTContentStore, initTQuestionairetStore } from "store";
 import type { QuestionType, TeoricalType } from "store";
 
+import { mockedTeorical, mockedQuestionaire } from "./mockData";
+
 const StyledDivTitle = styled("div")`
   margin: 30px 0px;
 `;
@@ -28,21 +30,6 @@ const StyledGoBackButton = styled(Button)`
   color: ${globalTheme.palette.primary.dark};
 `;
 
-// TODO: mover los mockedData a un archivo especifico
-const mockedTeoricalData: TeoricalType[] = [{
-  content: "",
-  title: "",
-}]
-
-const mockedQuestionaireData: QuestionType[] = [{
-  title: "",
-  question: "",
-  correctResponse: "",
-  falseResponse1: "",
-  falseResponse2: "",
-  falseResponse3: "",
-  difficulty: 1,
-}]
 
 const App: React.FC = () => {
   const theme = createTheme(globalTheme);
@@ -52,12 +39,12 @@ const App: React.FC = () => {
   const title: string = "React Interview Training";
 
   const [ clickedBtnArrayPos, setClickedBtnArrayPos ] = useState<number>(-1);
-  const [ teoricalData, setTeoricalData ] = useState<TeoricalType[]>(mockedTeoricalData);
-  const [ questionaireData, setQuestionaireData ] = useState<QuestionType[]>(mockedQuestionaireData);
+  const [ teoricalData, setTeoricalData ] = useState<TeoricalType[]>(mockedTeorical);
+  const [ questionaireData, setQuestionaireData ] = useState<QuestionType[]>(mockedQuestionaire);
 
   useEffect(() => {
-    initTContentStore(setTeoricalData)
-    initTQuestionairetStore(setQuestionaireData)
+      initTContentStore(setTeoricalData)
+      initTQuestionairetStore(setQuestionaireData)
   }, []);
 
   useEffect(() => {
