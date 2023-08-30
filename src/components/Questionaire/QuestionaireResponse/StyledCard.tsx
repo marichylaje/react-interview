@@ -1,6 +1,6 @@
 import { Paper, PaperProps } from '@mui/material';
 import { styled } from '@mui/system';
-import globalTheme from '../../theme';
+import globalTheme from '../../../theme';
 
 const selectedColor = globalTheme.palette.grey.light;
 const trueColor = globalTheme.palette.success.main;
