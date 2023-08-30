@@ -6,7 +6,7 @@ import { titleCaseFromHashParams } from 'helper';
 import type { TeoricalType } from 'store';
 
 export type TeoricGridProps = {
-    menuData: TeoricalType[],
+    menuData: TeoricalType,
     teoricalContent: JSX.Element,
     setHashData: (data: string) => void,
     hashData: string,
