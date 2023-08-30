@@ -1,0 +1,31 @@
+{/* ButtonOptions.mdx */}
+
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/blocks';
+
+import * as ButtonOptionsStories from './ButtonOptions.stories';
+
+<Meta of={ButtonOptionsStories} />
+
+export const Template = (args) => <ButtonOptions {...args} />;
+
+# ButtonOptions
+
+A ButtonOptions is used to present the different main options from the Home App 
+
+Use ButtonOptions to create the main screen, to be able to redirect to the other parts of the site
+
+<Canvas of={ButtonOptionsStories.Default} />
+
+## Usage
+
+The component comes in different color variants such as `primary`, `secondary`, `success`, `info`, etc. which you can use to alter the color of the button,
+and different variants, such as `text`, `outlined` and `contained`, that affects the look and feel.
+
+## Props Table
+
+<Story name="Variant Contained" args={{btnText: 'Click me'}}>
+    {Template.bind({})}
+</Story>
+
+<ArgsTable story="Variant Contained" />
+

@@ -1,20 +1,23 @@
 import { StoryFn, Meta } from '@storybook/react';
+import { Provider } from 'react-redux';
+import { store } from '../../../store';
 import BounceVerticallyAnim, { BounceVerticallyAnimProps } from '../BounceVerticallyAnim';
-import { ButtonOptions } from '../../../components/index';
+import { ButtonOptions, MenuList } from '../../../components/index';
+import { mockedQuestionaire } from '../../../mockData';
 
 export default {
-  title: 'Components/BounceVerticallyAnim',
+  title: 'HOC-Components/BounceVerticallyAnim',
   component: BounceVerticallyAnim,
+  argTypes: {
+    children: { table: { disable: true } }
+  },
 } as Meta;
-const menuListMocked = [{
-  title: "Menu 1",
-  difficulty: 2
-}, {
-  title: "Menu 2",
-  difficulty: 2
-}];
 
-const Template: StoryFn<BounceVerticallyAnimProps> = (args) => <BounceVerticallyAnim {...args} />;
+const Template: StoryFn<BounceVerticallyAnimProps> = (args) => (
+  <Provider store={store}>
+    <BounceVerticallyAnim {...args} />
+  </Provider>
+);
 
 export const ButtonBounce = Template.bind({});
 ButtonBounce.args = {
@@ -23,5 +26,13 @@ ButtonBounce.args = {
       btnText="Click me" 
       variant="contained" 
       onClickBtn={() => {console.log("button clicked")}}
+    />,
+};
+
+export const MenuListBounce = Template.bind({});
+MenuListBounce.args = {
+  children: 
+    <MenuList 
+      menuData={mockedQuestionaire}
     />,
 };

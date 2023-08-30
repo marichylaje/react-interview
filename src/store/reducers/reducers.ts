@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type TeoricalType = {
-    content: string;
+    content: string | {content: Object[], nodeType: string, data: Object}[];
     title: string;
 };
 

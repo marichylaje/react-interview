@@ -6,15 +6,15 @@ import { titleCaseFromHashParams } from 'helper';
 import type { ContentfulStateType } from 'store';
  
 const TeoricContent: React.FC = () => {
-    const myData = useSelector((state: { contentful: ContentfulStateType }) => state.contentful.teorical);
+    const menuData = useSelector((state: { contentful: ContentfulStateType }) => state.contentful.teorical);
 
     const [hashData, setHashData] = useState(titleCaseFromHashParams());
 
-    const teoricalContent = myData.find((obj) => obj.title === hashData)?.content;
+    const teoricalContent = menuData.find((obj) => obj.title === hashData)?.content;
 
     return (
         <TeoricGrid 
-            menuData={myData} 
+            menuData={menuData} 
             teoricalContent={<RichText complexText={teoricalContent} />} 
             hashData={hashData}
             setHashData={setHashData}
