@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
 import { describe, expect, vi } from 'vitest'
 
-import ButtonOptions from "./ButtonOptions";
+import ButtonOptions from "../ButtonOptions";
 
 describe("ButtonOptions", () => {
   const fnBtn = () => {};
@@ -16,7 +16,7 @@ describe("ButtonOptions", () => {
       <ButtonOptions btnText="Click me" onClickBtn={onClickBtn} />
     );
     fireEvent.click(getByText("Click me"));
-    expect(onClickBtn).toHaveBeenCalled();
+    expect(onClickBtn).toHaveBeenCalledOnce();
   });
 
   test("renders button with custom variant", () => {
