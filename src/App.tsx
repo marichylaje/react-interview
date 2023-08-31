@@ -42,9 +42,13 @@ const App: React.FC = () => {
   const [ teoricalData, setTeoricalData ] = useState<TeoricalType[]>(mockedTeorical);
   const [ questionaireData, setQuestionaireData ] = useState<QuestionType[]>(mockedQuestionaire);
 
+  let flag: boolean = false;
   useEffect(() => {
+    if(!flag){
+      flag = !flag;
       initTContentStore(setTeoricalData)
       initTQuestionairetStore(setQuestionaireData)
+    }
   }, []);
 
   useEffect(() => {
