@@ -6,7 +6,7 @@ import contentfulReducer from './reducers/reducers';
 import questionaireReducer from './reducers/questionaireReducer';
 import store from "./store"
 import type { TeoricalType, ContentfulStateType } from "./reducers"
-import type { QuestionaireType, QuestionType, ExperienceType } from "./reducers"
+import type { QuestionaireType, QuestionType, UserExpType } from "./reducers"
 
 export {
     store,
@@ -27,5 +27,5 @@ export type {
     ContentfulStateType,
     QuestionaireType,
     QuestionType,
-    ExperienceType,
+    UserExpType,
 }

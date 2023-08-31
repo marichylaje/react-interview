@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateExpPoints, updateAnsweredQuestion } from 'store';
-import type { QuestionaireType, ExperienceType } from 'store';
+import type { QuestionaireType, UserExpType } from 'store';
 import { StyledCard } from './StyledCard';
 import { StyledCloseIcon } from './StyledCloseIcon';
 
@@ -22,7 +22,7 @@ const QuestionaireResponse: React.FC<QuestionaireResponseProps > = ({ answer, in
     if(answer && !answer.resp) return null;
     
     const dispatch = useDispatch();
-    const userStats = useSelector((state: { questionaire: ExperienceType }) => state.questionaire.experience);
+    const userStats = useSelector((state: { questionaire: UserExpType }) => state.questionaire.userExp);
     const hasSelectedAnswer = useSelector((state: { questionaire: QuestionaireType }) => state.questionaire.hasSelectedAnswer);
 
     const [ isOpenFullText, setIsOpenFullText ] = useState<boolean>(false);

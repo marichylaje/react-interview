@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type ExperienceType = {
+export type UserExpType = {
     level: number;
     expPoints: number;
 }
@@ -19,12 +19,12 @@ export type QuestionType = {
 
 
 export type QuestionaireType = {
-    experience: ExperienceType;
+    userExp: UserExpType;
     questions: QuestionType[];
 };
 
 const initialState: QuestionaireType = {
-    experience: {
+    userExp: {
         level: 1,
         expPoints: 0
     },
@@ -45,10 +45,10 @@ const questionaireSlice = createSlice({
         });
     },
     updateLevel: (state) => {
-        state.experience.level = state.experience.level + 1;
+        state.userExp.level = state.userExp.level + 1;
     },
     updateExpPoints: (state, action: PayloadAction<number>) => {
-        state.experience.expPoints = action.payload;
+        state.userExp.expPoints = action.payload;
     },
     
     updateContentfulQuestionaire: (state, action: PayloadAction<QuestionType[]>) => {

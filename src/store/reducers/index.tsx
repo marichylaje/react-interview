@@ -1,7 +1,7 @@
 import { updateContentfulTeorical } from "./reducers"
 import { updateLevel, updateAnsweredQuestion, updateExpPoints, updateContentfulQuestionaire } from "./questionaireReducer"
 import type { TeoricalType, ContentfulStateType } from "./reducers"
-import type { QuestionaireType, QuestionType, ExperienceType } from "./questionaireReducer"
+import type { QuestionaireType, QuestionType, UserExpType } from "./questionaireReducer"
 
 export {
     updateContentfulTeorical,
@@ -16,5 +16,5 @@ export type {
     ContentfulStateType,
     QuestionaireType,
     QuestionType,
-    ExperienceType,
+    UserExpType,
 }

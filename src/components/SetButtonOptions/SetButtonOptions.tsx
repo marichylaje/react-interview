@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid';
 import React from 'react';
 import { ButtonOptions } from 'components';
-import { FadeInAnim } from 'animatedHOC';
+import { WithFadeInAnim } from 'HOC';
 
 export type SetButtonOptionsProps = {
     setClickedBtnArrayPos: (i: number) => void;
@@ -19,9 +19,9 @@ const SetButtonOptions: React.FC<SetButtonOptionsProps> = ({ setClickedBtnArrayP
         <Grid container spacing={2}>
             {btnTexts.map((text, i) => (
                 <Grid item xs={6} key={i}>
-                    <FadeInAnim delay={1 + (i * 0.42)}>
+                    <WithFadeInAnim delay={1 + (i * 0.42)}>
                         <ButtonOptions btnText={text} onClickBtn={() => setClickedBtnArrayPos(i)} />
-                    </FadeInAnim>
+                    </WithFadeInAnim>
                 </Grid>
             ))}
         </Grid>

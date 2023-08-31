@@ -10,7 +10,7 @@ import { snakeCaseText } from 'helper';
 import type { QuestionType, TeoricalType, QuestionaireType } from 'store';
 
 const MenuList: React.FC<{ menuData: (TeoricalType | QuestionType)[] }> = ({ menuData }): JSX.Element => {
-    const level = useSelector((state: { questionaire: QuestionaireType }) => state?.questionaire?.experience?.level);
+    const level = useSelector((state: { questionaire: QuestionaireType }) => state?.questionaire?.userExp?.level);
 
     return (
         <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>

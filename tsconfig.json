@@ -15,12 +15,13 @@
     "jsx": "react-jsx",
     "baseUrl": "src",
     "paths": {
-      "animatedHOC": ["animatedHOC/index.ts"],
+      "HOC": ["HOC/index.ts"],
       "components": ["components/index.ts"],
       "pages": ["pages/index.tsx"],
       "store": ["store/index.tsx"],
       "helper": ["helper.tsx"],
       "theme": ["theme.ts"],
+      "assets": ["assets/index.ts"],
       "contentful": ["../contentful.ts"],
     },
 
