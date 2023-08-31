@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-type QuestionSpaceProps = {
+type WithFadeInAnimProps = {
     children: React.ReactNode;
     duration?: number;
     delay?: number;
 }
 
   
-const FadeInAnim: React.FC<QuestionSpaceProps> = (props) => {
+const WithFadeInAnim: React.FC<WithFadeInAnimProps> = (props) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -20,4 +20,4 @@ const FadeInAnim: React.FC<QuestionSpaceProps> = (props) => {
   );
 };
 
-export default FadeInAnim;
+export default WithFadeInAnim;

@@ -1,21 +1,21 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { Provider } from 'react-redux';
-import { store } from '../../../store';
-import BounceVerticallyAnim, { BounceVerticallyAnimProps } from '../BounceVerticallyAnim';
-import { ButtonOptions, MenuList } from '../../../components/index';
-import { mockedQuestionaire } from '../../../mockData';
+import { store } from '../../../../store';
+import WithBounceVerticallyAnim, { WithBounceVerticallyAnimProps } from '../WithBounceVerticallyAnim';
+import { ButtonOptions, MenuList } from '../../../../components';
+import { mockedQuestionaire } from '../../../../mockData';
 
 export default {
-  title: 'HOC-Components/BounceVerticallyAnim',
-  component: BounceVerticallyAnim,
+  title: 'HOC/animations/WithBounceVerticallyAnim',
+  component: WithBounceVerticallyAnim,
   argTypes: {
     children: { table: { disable: true } }
   },
 } as Meta;
 
-const Template: StoryFn<BounceVerticallyAnimProps> = (args) => (
+const Template: StoryFn<WithBounceVerticallyAnimProps> = (args) => (
   <Provider store={store}>
-    <BounceVerticallyAnim {...args} />
+    <WithBounceVerticallyAnim {...args} />
   </Provider>
 );
 

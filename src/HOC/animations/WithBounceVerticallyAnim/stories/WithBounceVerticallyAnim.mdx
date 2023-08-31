@@ -1,24 +1,24 @@
-{/* BounceVerticallyAnim.mdx */}
+{/* WithBounceVerticallyAnim.mdx */}
 
 import { ArgsTable, Story, Canvas, Meta } from '@storybook/blocks';
-import { ButtonOptions } from '../../../components/index';
+import { ButtonOptions } from '../../../../components/index';
 import { Provider } from 'react-redux';
-import { store } from '../../../store';
+import { store } from '../../../../store';
 
-import * as BounceVerticallyAnimStories from './BounceVerticallyAnim.stories';
+import * as WithBounceVerticallyAnimStories from './WithBounceVerticallyAnim.stories';
 
-<Meta of={BounceVerticallyAnimStories} />
+<Meta of={WithBounceVerticallyAnimStories} />
 
 export const Template = (args) => 
     <Provider store={store}>
-        <BounceVerticallyAnim {...args} />
+        <WithBounceVerticallyAnim {...args} />
     </Provider>;
 
-# BounceVerticallyAnim
+# WithBounceVerticallyAnim
 
 The Higher Order Component will apply an animated effect of "bouncing" to the wrapped component, as it is in the button example.
 
-Use BounceVerticallyAnim to wrap any component, to generate a dynamic fixed animation in the app
+Use WithBounceVerticallyAnim to wrap any component, to generate a dynamic fixed animation in the app
 
 ## Props Table
 

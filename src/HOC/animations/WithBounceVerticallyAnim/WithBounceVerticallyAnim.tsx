@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export type BounceVerticallyAnimProps = {
+export type WithBounceVerticallyAnimProps = {
     children: React.ReactNode;
 }
 
   
-const BounceVerticallyAnim: React.FC<BounceVerticallyAnimProps> = (props) => {
+const WithBounceVerticallyAnim: React.FC<WithBounceVerticallyAnimProps> = (props) => {
   return (
     <motion.div
         initial={{ opacity: 0, rotate: -90, x: -100 }}
@@ -25,4 +25,4 @@ const BounceVerticallyAnim: React.FC<BounceVerticallyAnimProps> = (props) => {
   );
 };
 
-export default BounceVerticallyAnim;
+export default WithBounceVerticallyAnim;
