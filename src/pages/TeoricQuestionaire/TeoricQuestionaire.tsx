@@ -6,15 +6,14 @@ import Box from '@mui/material/Box';
 import { TeoricGrid, Questionaire } from 'components';
 import { titleCaseFromHashParams } from 'helper';
 import { updateLevel } from 'store';
-import type { QuestionaireType, ExperienceType, QuestionType } from 'store';
+import { star } from 'assets';
+import type { QuestionaireType, UserExpType, QuestionType } from 'store';
+import { WithBounceVerticallyAnim, WithFadeInAnim } from 'HOC';
 
 type DifficultyCount = {
     [difficulty: number]: number;
 };
 
-export type TeoricQuestionaireProps = {
-
-}
 
 const emptyQuestionaireData: QuestionType = {
     title: '',
@@ -26,15 +25,33 @@ const emptyQuestionaireData: QuestionType = {
     difficulty: 1,
 }
 
-const TeoricQuestionaire: React.FC<TeoricQuestionaireProps> = () => {
+const LevelUp: React.FC = () => {
+    return(
+        <>
+            <WithFadeInAnim>
+                <img src={star} style={{width: "200px", height: "200px", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}/>
+            </WithFadeInAnim>
+            <WithFadeInAnim delay={.3}>
+                    <img src={star} style={{width: "100px", height: "100px", position: "absolute", top: "55%", left: "40%", transform: "translate(-50%, -50%)"}}/>
+            </WithFadeInAnim>
+            <WithFadeInAnim delay={.6}>
+                    <img src={star} style={{width: "100px", height: "100px", position: "absolute", top: "55%", left: "60%", transform: "translate(-50%, -50%)"}}/>
+            </WithFadeInAnim>
+            <h1 style={{width: "200px", height: "30px", position: "absolute", top: "56%", left: "43%"}}>Level Up!</h1>
+        </>
+    )
+}
+
+const TeoricQuestionaire: React.FC = () => {
     const dispatch = useDispatch();
     
     const allQuestions: QuestionType[] = useSelector((state: { questionaire: QuestionaireType }): QuestionType[] => state.questionaire.questions);
-    const userStats: ExperienceType = useSelector((state: { questionaire: QuestionaireType }) => state.questionaire.experience);
-    const { level, expPoints }: ExperienceType = userStats;
+    const userStats: UserExpType = useSelector((state: { questionaire: QuestionaireType }) => state.questionaire.userExp);
+    const { level, expPoints }: UserExpType = userStats;
 
     const [hashData, setHashData] = useState<string>(titleCaseFromHashParams());
     const [currentData, setCurrentData] = useState<QuestionType>(emptyQuestionaireData);
+    const [showLevelUp, setShowLevelUp] = useState<boolean>(false);
 
     const countByDifficulty: [string, number][] = allQuestions && Object.entries(allQuestions.reduce((count: DifficultyCount, obj) => {
         const { difficulty } = obj;
@@ -72,6 +89,10 @@ const TeoricQuestionaire: React.FC<TeoricQuestionaireProps> = () => {
     useEffect(() => {
         if(expPercentageTillNextLevel === 0 && expPoints !== 0){
             dispatch(updateLevel());
+            setShowLevelUp(true)
+            setTimeout(() => {
+                setShowLevelUp(false)
+            }, 3000);
         }
     }, [expPercentageTillNextLevel])
 
@@ -105,6 +126,7 @@ const TeoricQuestionaire: React.FC<TeoricQuestionaireProps> = () => {
                 hashData={hashData}
                 setHashData={setHashData}
             />
+            {showLevelUp && <LevelUp />}
         </>
 
     );
