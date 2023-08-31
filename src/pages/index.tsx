@@ -1,8 +1,9 @@
-import * as React from 'react';
-import TeoricQuestionaire from './TeoricQuestionaire';
-import TeoricContent from './TeoricContent';
-import CodingChallenges from './CodingChallenges';
-import RoadmapMission from './RoadmapMission';
+import React, { Suspense, lazy} from 'react';
+
+const TeoricQuestionaire = lazy(() => import("./TeoricQuestionaire")); 
+const TeoricContent = lazy(() => import("./TeoricContent")); 
+const CodingChallenges = lazy(() => import("./CodingChallenges")); 
+const RoadmapMission = lazy(() => import("./RoadmapMission")); 
 
 export type PagesProps = {
     clickedBtnArrayPos: number;
@@ -19,15 +20,19 @@ export type PagesProps = {
     ]
 */
 
+const Loading = () => (
+  <div>Loading...</div>
+)
+
 const Pages:React.FC<PagesProps> = ({clickedBtnArrayPos}: PagesProps) => {
     return (
-      <>
+      <Suspense fallback={<Loading />}>
         { clickedBtnArrayPos == 0 && <TeoricQuestionaire/> }
         { clickedBtnArrayPos == 1 && <TeoricContent/> }
         { clickedBtnArrayPos == 2 && <CodingChallenges/> }
         { clickedBtnArrayPos == 3 && <RoadmapMission/> }
-      </>
+      </Suspense>
     );
 }
 
-export default Pages;
+export default Pages; 
