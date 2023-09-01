@@ -8,9 +8,8 @@ import { styled } from '@mui/system';
 import globalTheme from "./theme";
 import './App.css'
 
-import { MovingTitle } from "components"
-import { MovingSubtitle } from "components";
-import { SetButtonOptions } from "components";
+import { MovingTitle, MovingSubtitle, SetButtonOptions } from "components"
+
 import Pages from "pages";
 import { updateContentfulTeorical, updateContentfulQuestionaire, initTContentStore, initTQuestionairetStore } from "store";
 import type { QuestionType, TeoricalType } from "store";
@@ -42,13 +41,9 @@ const App: React.FC = () => {
   const [ teoricalData, setTeoricalData ] = useState<TeoricalType[]>(mockedTeorical);
   const [ questionaireData, setQuestionaireData ] = useState<QuestionType[]>(mockedQuestionaire);
 
-  let flag: boolean = false;
   useEffect(() => {
-    if(!flag){
-      flag = !flag;
-      initTContentStore(setTeoricalData)
-      initTQuestionairetStore(setQuestionaireData)
-    }
+    initTContentStore(setTeoricalData)
+    initTQuestionairetStore(setQuestionaireData)
   }, []);
 
   useEffect(() => {
@@ -68,14 +63,14 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
-        <Container maxWidth="lg">
-          <StyledGoBackButton href={"/#"} onClick={goBack}>Go Back</StyledGoBackButton>
+        <Container maxWidth="lg" className="">
+          <StyledGoBackButton href={"/#"} onClick={goBack} className="">Go Back</StyledGoBackButton>
           <StyledDivTitle>
             <MovingTitle titleProp={titleComp}/>
             <MovingSubtitle titleProp={title}/>
           </StyledDivTitle>
 
-          <Grid container spacing={2}>  
+          <Grid container spacing={2} className="grid">  
             {
               clickedBtnArrayPos >= 0 
               ?
