@@ -16,15 +16,15 @@ const btnTexts = [
 
 const SetButtonOptions: React.FC<SetButtonOptionsProps> = ({ setClickedBtnArrayPos }: SetButtonOptionsProps) => {
     return (
-        <Grid container spacing={2}>
+        <div className="max-w-lg">
             {btnTexts.map((text, i) => (
-                <Grid item xs={6} key={i}>
-                    <WithFadeInAnim delay={1 + (i * 0.42)}>
-                        <ButtonOptions btnText={text} onClickBtn={() => setClickedBtnArrayPos(i)} />
+                <div className="w-1/2 inline-block relative" style={{minWidth: "200px"}} key={i}>
+                    <WithFadeInAnim delay={.7 + (i * 0.42)}>
+                        <ButtonOptions className="xs:translate-x-1/3 translate-x-3" btnText={text} onClickBtn={() => setClickedBtnArrayPos(i)} />
                     </WithFadeInAnim>
-                </Grid>
+                </div>
             ))}
-        </Grid>
+        </div>
     );
 };
 

@@ -6,6 +6,7 @@ const getEntriesContentful = async (contentType: string) => {
         content_type: contentType,
       });
       const response = entries.items;
+      console.log({response})
       return response.map((entry) => entry.fields);
     } catch (error) {
       console.error('Error obtaining entries from Contentful:', error);

@@ -10,9 +10,7 @@ export interface ButtonOptionsProps extends ButtonProps {
 
 const ButtonOptions: React.FC<ButtonOptionsProps> = ({btnText, onClickBtn, ...props}: ButtonOptionsProps) => {
   return (
-    <div>
-        <StyledButtonOptions onClick={onClickBtn} variant={props.variant ?? "outlined"} {...props}>{btnText}</StyledButtonOptions>
-    </div>
+      <StyledButtonOptions onClick={onClickBtn} variant={props.variant ?? "outlined"} {...props}>{btnText}</StyledButtonOptions>
   );
 }
 

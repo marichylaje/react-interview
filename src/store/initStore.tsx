@@ -1,7 +1,7 @@
 import { getEntriesContentful } from "store";
-import type { ContentfulStateType } from "store";
+import type { TeoricalType, QuestionType } from "store";
 
-const initTContentStore = async (setData: (data: ContentfulStateType) => void) => {
+const initTContentStore = async (setData: (data: TeoricalType[]) => void) => {
     getEntriesContentful('teoricContent')
             .then((contentfulData) => {
                 setData(contentfulData);
@@ -11,7 +11,7 @@ const initTContentStore = async (setData: (data: ContentfulStateType) => void) =
     });
 
 }
-const initTQuestionairetStore = async (setData: (data: ContentfulStateType) => void) => {
+const initTQuestionairetStore = async (setData: (data: QuestionType[]) => void) => {
     getEntriesContentful('teoricQuestionaire')
             .then((contentfulData) => {
                 setData(contentfulData);
