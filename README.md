@@ -66,6 +66,8 @@ Before you begin, make sure you have the following installed:
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
 - [Contentful](https://www.contentful.com/)
+- [StyledComponents](https://styled-components.com/)
+
 
 ## ✍️ Authors <a name="authors"></a>
 
