@@ -64,13 +64,12 @@ const App: React.FC = () => {
         <CssBaseline />
 
         <Container maxWidth="lg" className="">
-          <StyledGoBackButton href={"/#"} onClick={goBack} className="">Go Back</StyledGoBackButton>
+          <StyledGoBackButton href={"/#"} onClick={goBack} className="z-50">Go Back</StyledGoBackButton>
           <StyledDivTitle>
             <MovingTitle titleProp={titleComp}/>
             <MovingSubtitle titleProp={title}/>
           </StyledDivTitle>
 
-          <Grid container spacing={2} className="grid">  
             {
               clickedBtnArrayPos >= 0 
               ?
@@ -78,7 +77,6 @@ const App: React.FC = () => {
               :
                 <SetButtonOptions setClickedBtnArrayPos={setClickedBtnArrayPos}/>
             }
-          </Grid>
         </Container>
       </ThemeProvider>
     </>

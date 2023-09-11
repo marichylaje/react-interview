@@ -25,6 +25,7 @@ const emptyQuestionaireData: QuestionType = {
     difficulty: 1,
 }
 
+// TODO: stand alone component
 const LevelUp: React.FC = () => {
     return(
         <>
@@ -113,10 +114,31 @@ const TeoricQuestionaire: React.FC = () => {
 
         - si pongo un "console.log({question})" en el Reducer, se ejecuta y me devuelve un Proxy
     */
+    let scrollYPos = 0;
+    const [ positionLevelBar, setPositionLevelBar ]  = useState("unset");
+        useEffect(() => {
+            const handleScroll = () => {
+              scrollYPos = window.scrollY;
+              const a = scrollYPos > 211 ? "sticky" : "unset";
+              if(a !== positionLevelBar) {
+                setPositionLevelBar(a)
+            };
+                console.log({scrollYPos});
+                console.log({positionLevelBar});
+                console.log({a});
+            };
+          
+            window.addEventListener("scroll", handleScroll);
+          
+            return () => {
+              window.removeEventListener("scroll", handleScroll);
+            };
+          }, [positionLevelBar]);
+          
 
     return (
         <>
-            <Box sx={{ width: '100%' }}>
+            <Box sx={{ width: '100%', position: positionLevelBar, zIndex: 9, paddingTop: "35px", top: 0, backgroundColor: "white" }}>
                 <p>Level {level}</p>
                 <LinearProgress variant="determinate" value={expPercentageTillNextLevel}/>
             </Box>
